@@ -18,10 +18,7 @@ public class CodeAnalyzer {
 
     public static List<List<String>> classeFilesData = new ArrayList<>();
     public static List<List<String>> methodesFilesData = new ArrayList<>();
-    public static List<String> classeNames = new ArrayList<>();
     public static List<String> visitedLinks = new ArrayList<>();
-    public static String lastLineItem = null;
-
 
     /**
      * @param args
@@ -29,7 +26,6 @@ public class CodeAnalyzer {
      */
     public static void main(String[] args) throws IOException {
         String currentPath = getAbsolutePath();
-        System.out.println(currentPath);
         String linkToPass = "https://github.com/jfree/jfreechart";
         String firstLink = linkToPass + "/tree/master";
         String secondLink = linkToPass + "/blob/master";
@@ -41,7 +37,10 @@ public class CodeAnalyzer {
         FileWriter classesWriter = new FileWriter(currentPath + "/classes.csv");
         FileWriter methodesWriter = new FileWriter(currentPath + "/methodes.csv");
         printCSV(classeFilesData, classesWriter);
+        System.out.println("\n-------------------\n");
         printCSV(methodesFilesData, methodesWriter);
+        classesWriter.close();
+        methodesWriter.close();
     }
 
     /**
@@ -61,13 +60,11 @@ public class CodeAnalyzer {
      */
     public static void printCSV(List<List<String>> fileToPrint, FileWriter writer) throws IOException {
         for (List<String> methodeData: fileToPrint) {
-            System.out.println(methodeData);
             String collect = String.join(", ", methodeData);
             System.out.println(collect);
             writer.write(collect);
             writer.write("\t\r\n");
         }
-        writer.close();
     }
 
     /**
@@ -89,9 +86,7 @@ public class CodeAnalyzer {
                         visitedLinks.add(chemin);
                         if (chemin.contains(firstLink)) {
                             getDataFiles(chemin, firstLink, secondLink);
-                        } else {
-                            getAndUseExtractedCode(chemin);
-                        }
+                        } else { getAndUseExtractedCode(chemin); }
                     }
                 }
             }
@@ -104,10 +99,8 @@ public class CodeAnalyzer {
      * @throws IOException
      */
     public static Document getData(String dataURL) throws IOException {
-        try {
-            return Jsoup.connect(dataURL).get();
-        } catch (HttpStatusException ignored) {
-        }
+        try { return Jsoup.connect(dataURL).get(); }
+        catch (HttpStatusException ignored) {}
         return null;
     }
 
@@ -125,20 +118,6 @@ public class CodeAnalyzer {
                         false, classeTreatedFile.get(2));
             }
         }
-    }
-
-    public static void assignClassFilesData(String chemin, List<String> classeTreatedFile,
-                                            List<String> fileCode) {
-        float totalClasseCloc, totalClasseNCLoc, totalClasseLoc;
-        int startIndex, endIndex;
-        startIndex = Integer.parseInt(classeTreatedFile.get(0));
-        endIndex = Integer.parseInt(classeTreatedFile.get(1));
-        totalClasseCloc = classe_CLOC(fileCode.subList(startIndex, endIndex));
-        totalClasseNCLoc = classe_NCLOC(fileCode.subList(startIndex, endIndex));
-        totalClasseLoc = classe_LOC(totalClasseNCLoc, totalClasseCloc);
-        classeFilesData.add(Arrays.asList(chemin, classeTreatedFile.get(2),
-                String.valueOf(totalClasseLoc), String.valueOf(totalClasseCloc),
-                String.valueOf(classe_DC(totalClasseCloc, totalClasseLoc))));
     }
 
     /**
@@ -161,18 +140,13 @@ public class CodeAnalyzer {
                                           String currentClass) throws IOException {
         String className = null, tempClassName;
         int startIndex = 0, endIndex = 0, currIndex = 0;
-        List<List<String>> allMethodesData = new ArrayList<>();
         if (isClass) {
             for (String element : currentCode) {
                 tempClassName = getClassName(element, getLineElements(element));
-
-                if (element.contains("Copy lines")) {
-                    endIndex = currIndex;
-                }
+                if (element.contains("Copy lines")) { endIndex = currIndex; }
                 if (tempClassName != null) {
                     className = tempClassName;
-                    classeNames.add(className);
-                    startIndex = currIndex;
+                    startIndex = getStartIndex(currIndex, currentCode);
                 }
                 if (startIndex != 0 && endIndex != 0) {
                     return getClassIndexesAndName(startIndex, endIndex, className);
@@ -198,18 +172,21 @@ public class CodeAnalyzer {
         return className;
     }
 
-    public static List<String> getClassIndexesAndName(int startIndex, int endIndex,
+    public static List<String> getClassIndexesAndName(int startIndex,
+                                                      int endIndex,
                                                       String className) {
         return new ArrayList<>(Arrays.asList(String.valueOf(startIndex),
                 String.valueOf(endIndex), className));
     }
 
-    public static List<List<String>> getFileMethodes(List<String> currentCode, String chemin, String className) {
-        String firstMethodeName = null, secondMethodeName, methodeName = null, tempMethodeName;
-        List<String> capturedMethode = new ArrayList<>(), reparsedMethode = null,
+    public static List<List<String>> getFileMethodes(List<String> currentCode,
+                                                     String chemin, String className) {
+        String firstMethodeName = null, secondMethodeName, methodeName, tempMethodeName;
+        int lineCodeIndex = 0;
+        List<String> capturedMethode = new ArrayList<>(), reparsedMethode,
                 methodeData = new ArrayList<>();
         List<List<String>> allMethodesData = new ArrayList<>();
-        boolean methodeFound = false, first = true, secondMethodeFound = false;
+        boolean methodeFound = false, first = true;
         for(String lineCode : currentCode) {
             if(!methodeFound) {
                 if(first) {
@@ -218,6 +195,10 @@ public class CodeAnalyzer {
                     if(!firstMethodeName.equals(" ")) { first = false; }
                 }
                 if(!firstMethodeName.equals(" ")) {
+                    capturedMethode = addJavaDOC(lineCodeIndex, currentCode);
+                    if(detectForPrivacyString(currentCode.get(lineCodeIndex - 1))) {
+                        capturedMethode.add(currentCode.get(lineCodeIndex - 1));
+                    }
                     capturedMethode.add(lineCode);
                     methodeFound = true;
                 }
@@ -241,13 +222,36 @@ public class CodeAnalyzer {
                 }
                 capturedMethode.add(lineCode);
             }
-
+            lineCodeIndex++;
         }
         return allMethodesData;
     }
 
+    public static List<String> addJavaDOC(int lineCodeIndex, List<String> currentCode) {
+        int prevLineIndex = lineCodeIndex - 1;
+        List<String> preComments = new ArrayList<>();
+        while(!currentCode.get(prevLineIndex).contains("}") &&
+                !currentCode.get(prevLineIndex).contains("/**")) {
+            if(!detectForComments(currentCode.get(prevLineIndex)) ||
+                    currentCode.get(prevLineIndex).contains("@")) {
+                preComments.add(0, currentCode.get(prevLineIndex));
+            }
+            prevLineIndex--;
+        }
+        preComments.add(0, currentCode.get(prevLineIndex));
+        return preComments;
+    }
+
+    public static int getStartIndex(int lineCodeIndex, List<String> currentCode) {
+        int prevLineIndex = lineCodeIndex - 1;
+        while(!currentCode.get(prevLineIndex).contains("/**") && prevLineIndex > 0) {
+            prevLineIndex--;
+        }
+        return prevLineIndex;
+    }
+
     public static String getMethodName(String element, String[] lineElements) {
-        String methodName, prevItem = null, prevPrevItem = null;
+        String prevItem = null, prevPrevItem = null;
         StringBuilder tempString = new StringBuilder(), emptyString = new StringBuilder("");
         int itemIndex;
         if(detectForComments(element) && detectForPrivacy(lineElements) &&
@@ -260,8 +264,6 @@ public class CodeAnalyzer {
                 }
                 if((item.contains("(") || item.contains(","))) {
                     if(item.contains("(")) {
-                        if(tempString.toString().contains("(")) {
-                        }
                         String[] temp = item.split("\\(");
                         tempString = emptyString;
                         if(temp.length >= 2 && !temp[1].contains(")")) {
@@ -272,7 +274,6 @@ public class CodeAnalyzer {
                             tempString.append("_").append(lineElements[itemIndex + 1]);
                         }
                     }
-
                 } else {
                     if(itemIndex >=2) {
                         if(lineElements.length - 1 >= itemIndex + 1) {
@@ -285,12 +286,9 @@ public class CodeAnalyzer {
                         }
                     }
                 }
-                if(item.contains(",")) { lastLineItem = item; }
             }
         }
-        if(tempString.length() > 0) {
-            return tempString.toString();
-        }
+        if(tempString.length() > 0) { return tempString.toString(); }
         return " ";
     }
 
@@ -305,9 +303,7 @@ public class CodeAnalyzer {
                     countStarted = true;
                 }
                 else { count--; }
-            } else {
-                if(countStarted && count == 0) { break; }
-            }
+            } else { if(countStarted && count == 0) { break; } }
             reparsedMethode.add(lineCode);
         }
         return reparsedMethode;
@@ -317,9 +313,7 @@ public class CodeAnalyzer {
                                               String comparator,
                                               String comparatorRegex) {
         int i = 0;
-        while(!splittedLineCode[i].contains(comparator)) {
-            i++;
-        }
+        while(!splittedLineCode[i].contains(comparator)) { i++; }
         return splittedLineCode[i].split(comparatorRegex)[0];
     }
 
@@ -328,12 +322,14 @@ public class CodeAnalyzer {
         int currIndex = 0;
         String[] splitElements;
         for (String element : splittedLineCode) {
-            if (element.contains("(")) { extractedMethode.append(splitParenthesis(element)); }
-            else {
+            if (element.contains("(")) {
+                extractedMethode.append(splitParenthesis(element));
+            } else {
                 if(element.contains(",")) {
                     splitElements = element.split("(?!^)");
                     if(splitElements[0].contentEquals(",")) {
-                        extractedMethode.append("_").append(removeFirstChar(element, splitElements));
+                        extractedMethode.append("_").append(removeFirstChar(element,
+                                splitElements));
                     } else {
                         if(splitElements[splitElements.length - 1].contentEquals(",") &&
                                 (currIndex != splittedLineCode.length - 1)) {
@@ -354,12 +350,9 @@ public class CodeAnalyzer {
         StringBuilder multipleLinesParams = new StringBuilder();
         String oneLineList;
         while(!lineCode.contains(")")) {
-//            System.out.println("lineCode : " + lineCode + ", reparsedMethode : " + reparsedMethode + ", start : " + start);
             splittedLineCode = lineCode.split(" ");
             oneLineList = buildStringFromListOneLine(splittedLineCode);
-            if(!oneLineList.equals("")) {
-                multipleLinesParams.append(oneLineList);
-            }
+            if(!oneLineList.equals("")) { multipleLinesParams.append(oneLineList); }
             lineCode = reparsedMethode.get(start++);
         }
         return multipleLinesParams.toString();
@@ -371,27 +364,42 @@ public class CodeAnalyzer {
         return Arrays.copyOfRange(lineElements, 1, lineElements.length);
     }
 
-    /**
-     *
-     * @param currentCode
-     * @param chemin
-     * @return
-     */
-    public static List<String> getClasseData(List<String> currentCode, String chemin) {
-        String className;
-        List<String> treatedFile = new ArrayList<>();
-        className = currentCode.remove(currentCode.size() - 1);
-        treatedFile.add(chemin);
-        treatedFile.add(className);
-        float commentsDensity = classe_CLOC(currentCode);
-        treatedFile.add(String.valueOf(commentsDensity));
-        float codeDensity = classe_NCLOC(currentCode);
-        treatedFile.add(String.valueOf(codeDensity));
-        float linesOfCode = classe_LOC(codeDensity, commentsDensity);
-        treatedFile.add(String.valueOf(linesOfCode));
-        float classDensity = classe_DC(commentsDensity, linesOfCode);
-        treatedFile.add(String.valueOf(classDensity));
-        return treatedFile;
+//    /**
+//     *
+//     * @param currentCode
+//     * @param chemin
+//     * @return
+//     */
+//    public static List<String> getClasseData(List<String> currentCode, String chemin) {
+//        String className;
+//        List<String> treatedFile = new ArrayList<>();
+//        className = currentCode.remove(currentCode.size() - 1);
+//        treatedFile.add(chemin);
+//        treatedFile.add(className);
+//        float commentsDensity = classe_CLOC(currentCode);
+//        treatedFile.add(String.valueOf(commentsDensity));
+//        float codeDensity = classe_NCLOC(currentCode);
+//        treatedFile.add(String.valueOf(codeDensity));
+//        float linesOfCode = classe_LOC(codeDensity, commentsDensity);
+//        treatedFile.add(String.valueOf(linesOfCode));
+//        float classDensity = classe_DC(commentsDensity, linesOfCode);
+//        treatedFile.add(String.valueOf(classDensity));
+//        return treatedFile;
+//    }
+
+    public static void assignClassFilesData(String chemin,
+                                            List<String> classeTreatedFile,
+                                            List<String> fileCode) {
+        float totalClasseCloc, totalClasseNCLoc, totalClasseLoc;
+        int startIndex, endIndex;
+        startIndex = Integer.parseInt(classeTreatedFile.get(0));
+        endIndex = Integer.parseInt(classeTreatedFile.get(1));
+        totalClasseCloc = classe_CLOC(fileCode.subList(startIndex, endIndex));
+        totalClasseNCLoc = classe_NCLOC(fileCode.subList(startIndex, endIndex));
+        totalClasseLoc = classe_LOC(totalClasseNCLoc, totalClasseCloc);
+        classeFilesData.add(Arrays.asList(chemin, classeTreatedFile.get(2),
+                String.valueOf(totalClasseLoc), String.valueOf(totalClasseCloc),
+                String.valueOf(classe_DC(totalClasseCloc, totalClasseLoc))));
     }
 
     public static List<String> getMethodeData(List<String> currentCode, String chemin,
@@ -412,9 +420,7 @@ public class CodeAnalyzer {
 
     public static String splitParenthesis(String element) {
         String[] splitElements = element.split("\\(");
-        if(splitElements.length > 1) {
-            return splitElements[0] + "_" + splitElements[1];
-        }
+        if(splitElements.length > 1) { return splitElements[0] + "_" + splitElements[1]; }
         return splitElements[0];
     }
 
@@ -441,8 +447,7 @@ public class CodeAnalyzer {
     }
 
     public static boolean detectForPrivacyString(String line) {
-        return line.contains("private") ||
-                line.contains("protected") ||
+        return line.contains("private") || line.contains("protected") ||
                 line.contains("public");
     }
     
@@ -456,8 +461,12 @@ public class CodeAnalyzer {
 
     public static String extractMethodeName(List<String> reparsedMethode,
                                             String firstmethodeName) {
+        int start = 0;
         String[] splittedLineCode;
-        String lineCode = reparsedMethode.get(0);
+        while(!reparsedMethode.get(start).contains(firstmethodeName)) { start++; }
+        String lineCode = reparsedMethode.get(start);
+        List<String> updatedReparsedMethode =
+                new ArrayList<>(reparsedMethode.subList(start, reparsedMethode.size()));
         if(lineCode.contains(firstmethodeName) &&
                 detectForPrivacyString(lineCode)) {
             splittedLineCode = lineCode.split(" ");
@@ -466,7 +475,7 @@ public class CodeAnalyzer {
             } else if(lineCode.contains("(") && lineCode.contains(")")) {
                 return buildStringFromListOneLine(splittedLineCode);
             } else {
-                return buildStringFromMultipleLines(reparsedMethode, lineCode);
+                return buildStringFromMultipleLines(updatedReparsedMethode, lineCode);
             }
         }
         return null;
