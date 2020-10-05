@@ -17,6 +17,7 @@ public class CodeAnalyzer {
     public static List<List<String>> methodesFilesData = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
+        System.out.println("Working...");
         String currentPath = getAbsolutePath();
         ClassesParser classesParser = new ClassesParser(Arrays.asList("chemin",
                 "class", "methode", "methode_CLOC", "methode_LOC", "methode_DC"));

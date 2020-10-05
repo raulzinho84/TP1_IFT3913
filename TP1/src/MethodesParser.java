@@ -313,7 +313,7 @@ public class MethodesParser extends Parser {
                 totalPredicats += handlePredicats(lineCode);
             }
         }
-        System.out.println("totalPredicats(total) : " + totalPredicats);
+        //System.out.println("totalPredicats(total) : " + totalPredicats);
         return totalPredicats;
     }
 
