@@ -4,11 +4,18 @@ import java.util.List;
 
 public class ClassesParser extends Parser {
 
+
+
     /**
      *
      * @param firstRow
      */
-    public ClassesParser(List<String> firstRow) { super(firstRow); }
+    public ClassesParser(List<String> firstRow) {
+        super(firstRow, Arrays.asList("chemin",
+                "class", "methode", "methode_CLOC", "methode_LOC", "methode_DC",
+                "classe_BC"));
+        this.addcomplexityArray(Arrays.asList("WMC", "classe_BC"));
+    }
 
     /**
      *
@@ -30,10 +37,8 @@ public class ClassesParser extends Parser {
             }
             if (startIndex != 0 && endIndex != 0) {
                 if(!tempClassesNames.contains(className)) {
-                    assignFilesData(this.getCurrChemin(),
-                            getClassIndexesAndName(startIndex, endIndex, className));
                     tempClassesNames.add(className);
-                    parseMethodes(methodesParser, className);
+                    treatClassesAndMethodes(methodesParser, startIndex, endIndex, className);
                 }
             }
             currIndex++;
@@ -100,25 +105,41 @@ public class ClassesParser extends Parser {
                 String.valueOf(endIndex), className));
     }
 
+    void treatClassesAndMethodes(MethodesParser methodesParser, int startParam, int endParam,
+                                 String className) {
+        int totalPredicats = 0, startIndex, endIndex;
+        float totalClasseCloc, totalClasseNCLoc, totalClasseLoc,
+                totalClasseDC, totalClassBC;
+        List<String> namesAndIndexes = getClassIndexesAndName(startParam, endParam,
+                className);
+        startIndex = Integer.parseInt(namesAndIndexes.get(0));
+        endIndex = Integer.parseInt(namesAndIndexes.get(1));
+        totalClasseCloc = classe_CLOC(this.getCodeToParse().subList(startIndex, endIndex));
+        totalClasseNCLoc = classe_NCLOC(this.getCodeToParse().subList(startIndex, endIndex));
+        totalClasseLoc = classe_LOC(totalClasseNCLoc, totalClasseCloc);
+        totalClasseDC = classe_DC(totalClasseCloc, totalClasseLoc);
+        totalPredicats = parseMethodes(methodesParser, className, totalClasseDC);
+        totalClassBC = classe_BC(totalClasseDC, totalPredicats);
+        this.addcomplexityArray(Arrays.asList(String.valueOf(totalPredicats),
+                String.valueOf(totalClassBC)));
+        assignFilesData(this.getCurrChemin(), namesAndIndexes, totalClasseCloc,
+                totalClasseLoc, totalClasseDC, totalClassBC);
+    }
+
     /**
      *
      * @param chemin
      * @param treatedFile
      */
-    void assignFilesData(String chemin,
-                                 List<String> treatedFile) {
-        float totalClasseCloc, totalClasseNCLoc, totalClasseLoc;
+    float assignFilesData(String chemin,
+                          List<String> treatedFile,
+                          float totalClasseCloc, float totalClasseLoc, float totalClasseDC, float totalClassBC) {
         List<String> resultedList;
-        int startIndex, endIndex;
-        startIndex = Integer.parseInt(treatedFile.get(0));
-        endIndex = Integer.parseInt(treatedFile.get(1));
-        totalClasseCloc = classe_CLOC(this.getCodeToParse().subList(startIndex, endIndex));
-        totalClasseNCLoc = classe_NCLOC(this.getCodeToParse().subList(startIndex, endIndex));
-        totalClasseLoc = classe_LOC(totalClasseNCLoc, totalClasseCloc);
         resultedList = Arrays.asList(chemin, treatedFile.get(2),
                 String.valueOf(totalClasseLoc), String.valueOf(totalClasseCloc),
-                String.valueOf(classe_DC(totalClasseCloc, totalClasseLoc)));
-        rearrangeData(resultedList);
+                String.valueOf(totalClasseDC), String.valueOf(totalClassBC));
+        this.rearrangeData(resultedList);
+        return totalClasseDC;
     }
 
     /**
@@ -126,11 +147,12 @@ public class ClassesParser extends Parser {
      * @param methodesParser
      * @return
      */
-    void parseMethodes(MethodesParser methodesParser,
-                               String currClasse) {
+    int parseMethodes(MethodesParser methodesParser,
+                               String currClasse, float totalClasseDC) {
         methodesParser.setCodeToParse(this.getCodeToParse());
         methodesParser.setCurrChemin(this.getCurrChemin());
-        methodesParser.getFileMethodes(this.getCurrChemin(), currClasse);
+        return methodesParser.getFileMethodes(this.getCurrChemin(), currClasse,
+                totalClasseDC);
     }
 
     /**
@@ -170,5 +192,15 @@ public class ClassesParser extends Parser {
      */
     float classe_DC(float commentsDensity, float linesOfCode) {
         return calculer_DC(commentsDensity, linesOfCode);
+    }
+
+    /**
+     *
+     * @param classe_DC
+     * @param WMC
+     * @return
+     */
+    float classe_BC(float classe_DC, float WMC) {
+        return calculer_BC(classe_DC, WMC);
     }
 }
