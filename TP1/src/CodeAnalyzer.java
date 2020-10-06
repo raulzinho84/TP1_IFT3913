@@ -43,11 +43,11 @@ public class CodeAnalyzer {
             throws IOException {
         int choice = provideChoice();
         String linkToPass;
-        if(choice == 1) {
+//        if(choice == 1) {     a faire
             linkToPass = "https://github.com/jfree/jfreechart";
-        } else {
-            linkToPass = "https://github.com/raulzinho84/TP1_IFT3913";
-        }
+//        } else {
+//            linkToPass = "https://github.com/raulzinho84/TP1_IFT3913";
+//        }
         String firstLink = linkToPass + "/tree/master";
         String secondLink = linkToPass + "/blob/master";
         getDataFiles(linkToPass, firstLink, secondLink, classesParser, methodesParser);
