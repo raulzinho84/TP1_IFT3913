@@ -5,11 +5,32 @@ import java.util.List;
 
 public class MethodesParser extends Parser {
 
+    private static boolean isSwitch;
+    private List<List<String>> complexityFile;
+
     /**
      *
      * @param firstRow
      */
-    public MethodesParser(List<String> firstRow) { super(firstRow); }
+    public MethodesParser(List<String> firstRow) {
+        super(firstRow, Arrays.asList("chemin",
+                "class", "methode", "methode_CLOC", "methode_LOC", "methode_DC",
+                "methode_BC"));
+        this.complexityFile = new ArrayList<>();
+        this.addcomplexityArray(Arrays.asList("CC", "methode_BC"));
+    }
+
+    /**
+     *
+     * @return
+     */
+    public boolean isSwitch() { return isSwitch; }
+
+    /**
+     *
+     * @param aSwitch
+     */
+    public void setSwitch(boolean aSwitch) { isSwitch = aSwitch; }
 
     @Override
     List<String> treatCode(String currentClass) {
@@ -22,13 +43,12 @@ public class MethodesParser extends Parser {
      * @param className
      * @return
      */
-    List<List<String>> getFileMethodes(String chemin, String className) {
+    int getFileMethodes(String chemin, String className, float totalClasseDC) {
         String firstMethodeName = null, secondMethodeName, methodeName, tempMethodeName;
-        int lineCodeIndex = 0, numPredicats = 0, capturedLineCode = 0;
+        int lineCodeIndex = 0, numPredicats = 0, totalPredicats = 0;
         List<String> capturedMethode = new ArrayList<>(), reparsedMethode,
                 nonCommentsMethode = new ArrayList<>();
-        List<List<String>> allMethodesData = new ArrayList<>();
-        boolean methodeFound = false, first = true, numPredicatsCounted = false;
+        boolean methodeFound = false, first = true;
         for(String lineCode : this.getCodeToParse()) {
             if(!methodeFound) {
                 if(first) {
@@ -55,7 +75,11 @@ public class MethodesParser extends Parser {
                     methodeName = extractMethodeName(reparsedMethode, tempMethodeName);
                     if(methodeName != null) {
                         numPredicats = calculerPredicats(nonCommentsMethode);
-                        addMethodeData(reparsedMethode, chemin, className, methodeName);
+                        totalPredicats += numPredicats;
+                        float methode_BC = addMethodeData(reparsedMethode, chemin,
+                                className, methodeName, numPredicats + 1);
+                        this.addcomplexityArray(Arrays.asList(String.valueOf(numPredicats + 1),
+                                String.valueOf(methode_BC)));
                     }
                     firstMethodeName = secondMethodeName;
                     secondMethodeName = " ";
@@ -67,7 +91,7 @@ public class MethodesParser extends Parser {
             }
             lineCodeIndex++;
         }
-        return allMethodesData;
+        return totalPredicats + 1;
     }
 
     /**
@@ -240,14 +264,16 @@ public class MethodesParser extends Parser {
 
     /**
      *
+     * @param reparsedMethode
      * @param chemin
      * @param currClasse
      * @param methodeName
+     * @param numPredicats
      * @return
      */
-    void addMethodeData(List<String> reparsedMethode,
+    float addMethodeData(List<String> reparsedMethode,
                                 String chemin, String currClasse,
-                                String methodeName) {
+                                String methodeName, int numPredicats) {
         List<String> treatedFile = new ArrayList<>();
         treatedFile.add(chemin);
         treatedFile.add(currClasse);
@@ -257,9 +283,12 @@ public class MethodesParser extends Parser {
         float codeDensity = methode_NCLOC(reparsedMethode);
         float linesOfCode = methode_LOC(codeDensity, commentsDensity);
         treatedFile.add(String.valueOf(linesOfCode));
-        float classDensity = methode_DC(commentsDensity, linesOfCode);
-        treatedFile.add(String.valueOf(classDensity));
-        rearrangeData(treatedFile);
+        float methodeDensity = methode_DC(commentsDensity, linesOfCode);
+        treatedFile.add(String.valueOf(methodeDensity));
+        float methode_BC = methode_BC(methodeDensity, numPredicats);
+        treatedFile.add(String.valueOf(methode_BC));
+        this.rearrangeData(treatedFile);
+        return methode_BC;
     }
 
     /*  ==================================================================  */
@@ -304,7 +333,7 @@ public class MethodesParser extends Parser {
      */
     int calculerPredicats(List<String> reparsedMethode) {
         List<String> elementLine;
-        int totalPredicats = 0;
+        int totalPredicats = 0, temp;
         for(String lineCode : reparsedMethode) {
             elementLine = separateAndRemoveSpaces(lineCode);
             if(!elementLine.get(0).contains("/*") &&
@@ -313,7 +342,6 @@ public class MethodesParser extends Parser {
                 totalPredicats += handlePredicats(lineCode);
             }
         }
-        System.out.println("totalPredicats(total) : " + totalPredicats);
         return totalPredicats;
     }
 
@@ -328,27 +356,23 @@ public class MethodesParser extends Parser {
                 || lineCode.contains("switch(") ||
                 lineCode.contains("switch (")) {
             if (lineCode.contains("switch(") || lineCode.contains("switch (")) {
-                return handleSwitchPredicats(lineCode);
+                isSwitch = true;
             } else { return 1; }
+        } else {
+            if(isSwitch && (lineCode.contains("case") ||
+                    lineCode.contains("default"))) {
+                if(lineCode.contains("default")) { isSwitch = false; }
+                return 1;
+            }
         }
         return 0;
     }
 
     /**
      *
-     * @param lineCode
-     * @return
-     */
-    int handleSwitchPredicats(String lineCode) {
-        int totalCount = 0;
-        return 1;
-    }
-
-    /**
-     *
-     * @param nClocResult
-     * @param clocResult
-     * @return
+     * @param nClocResult C'est le nombre des lignes sans commentaires.
+     * @param clocResult C'est le nombre des lignes avec commentaires.
+     * @return Le nombre total des lignes(avec et sans) commentaires.
      */
     float methode_LOC(float nClocResult, float clocResult) {
         return calculer_LOC(nClocResult, clocResult);
@@ -356,8 +380,9 @@ public class MethodesParser extends Parser {
 
     /**
      *
-     * @param methodeText
-     * @return
+     * @param methodeText C'est la methode dont on va calculer les
+     *                    commentaires contenu.
+     * @return Le nombre des lignes contenant des commentaires.
      */
     float methode_CLOC(List<String> methodeText) {
         return calculer_CLOC(methodeText);
@@ -365,8 +390,9 @@ public class MethodesParser extends Parser {
 
     /**
      *
-     * @param methodeText
-     * @return
+     * @param methodeText C'est la methode dont on va calculer les
+     *      *                    lignes sans commentaires contenu.
+     * @return Le nombre total des lignes sans commentaires dans une methode.
      */
     float methode_NCLOC(List<String> methodeText) {
         return calculer_NCLOC(methodeText);
@@ -374,11 +400,21 @@ public class MethodesParser extends Parser {
 
     /**
      *
-     * @param commentsDensity
-     * @param linesOfcode
-     * @return
+     * @param commentsDensity CLOC
+     * @param linesOfcode LOC
+     * @return CLOC/LOC
      */
     float methode_DC(float commentsDensity, float linesOfcode) {
         return calculer_DC(commentsDensity, linesOfcode);
+    }
+
+    /**
+     *
+     * @param methode_DC
+     * @param CC
+     * @return
+     */
+    float methode_BC(float methode_DC, float CC) {
+        return calculer_BC(methode_DC, CC);
     }
 }
