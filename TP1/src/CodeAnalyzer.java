@@ -3,7 +3,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -13,32 +12,86 @@ import java.util.*;
 public class CodeAnalyzer {
 
     public static List<String> visitedLinks = new ArrayList<>();
-    public static List<List<String>> classeFilesData = new ArrayList<>();
-    public static List<List<String>> methodesFilesData = new ArrayList<>();
 
+    /**
+     * Methode initiale qui contient le chemin absolu, les fichiers Writer qui vont
+     * ecrire les donnees recues dans un fichier .csv.
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
-        String currentPath = getAbsolutePath();
         ClassesParser classesParser = new ClassesParser(Arrays.asList("chemin",
                 "class", "methode", "methode_CLOC", "methode_LOC", "methode_DC"));
         MethodesParser methodesParser = new MethodesParser(Arrays.asList("chemin",
                 "class", "classe_LOC", "classe_CLOC", "classe_DC"));
-        String linkToPass = "https://github.com/jfree/jfreechart";
+        getDataFromFile(classesParser, methodesParser);
+        String currentPath = getAbsolutePath();
+        printFiles(classesParser,methodesParser,currentPath);
+    }
+
+    /**
+     *  Prend l'integer choisi (1 ou 2) et applique le site web choisi pour
+     *  extraire les donnees duquel.
+     * @param classesParser Un objet de type ClassesParser qui contient les
+     *                      fichier par les methodes appliquees par cette classe.
+     * @param methodesParser Un objet de type methodesParser qui contient les
+     *      *                fichier par les methodes appliquees par cette classe.
+     * @throws IOException
+     */
+    public static void getDataFromFile(ClassesParser classesParser,
+                                       MethodesParser methodesParser)
+            throws IOException {
+        int choice = provideChoice();
+        String linkToPass;
+        if(choice == 1) {
+            linkToPass = "https://github.com/jfree/jfreechart";
+        } else {
+            linkToPass = "https://github.com/raulzinho84/TP1_IFT3913";
+        }
         String firstLink = linkToPass + "/tree/master";
         String secondLink = linkToPass + "/blob/master";
-        getDataFiles("https://github.com/jfree/jfreechart", firstLink,
-                        secondLink, classesParser, methodesParser);
-        FileWriter classesWriter = new FileWriter(currentPath + "/classes.csv");
-        FileWriter methodesWriter = new FileWriter(currentPath + "/methodes.csv");
-        printCSV(classesParser.getParsedList(), classesWriter);
-        System.out.println("\n-------------------\n");
-        printCSV(methodesParser.getParsedList(), methodesWriter);
-        classesWriter.close();
-        methodesWriter.close();
+        getDataFiles(linkToPass, firstLink, secondLink, classesParser, methodesParser);
+    }
+
+    /**
+     *  C'est la methode contenant une boucle while pour verifier que le choix
+     *  est soit 1 ou 2.
+     * @return un integer dont la valeur est 1 ou 2.
+     */
+    public static int provideChoice() {
+        Scanner myObj = new Scanner(System.in);
+        int number;
+        do {
+            showDisplayMessage();
+            while (!myObj.hasNextInt()) {
+                System.out.println("Wrong choice! Please type a number.");
+                showDisplayMessage();
+                myObj.next(); // this is important!
+            }
+            number = myObj.nextInt();
+            if(number <= 0 || number > 2) {
+                System.out.println("Wrong choice! Please choose a number from " +
+                        "1 or 2.");
+                number = -1;
+            }
+        } while (number <= 0);
+        return number;
+    }
+
+    /**
+     *  Afficher un message sur l'ecran pour choisir si on veut le site web donne
+     *  a l'enonce ou un autre site web.
+     */
+    public static void showDisplayMessage() {
+        System.out.println("Please choose from the following : \n " +
+                "1. https://github.com/jfree/jfreechart \n " +
+                "2. A github website from your choice.");
     }
 
     /**
      *
-     * @return
+     * @return Le chemin absolu du repertoire qui sera utilise pour creer les
+     * fichiers .csv
      */
     public static String getAbsolutePath() {
         Path currentRelativePath = Paths.get("");
@@ -46,9 +99,31 @@ public class CodeAnalyzer {
     }
 
     /**
-     * 
+     *
+     * @param classesParser
+     * @param methodesParser
+     * @param currentPath
+     * @throws IOException
+     */
+    public static void printFiles(ClassesParser classesParser,
+                                  MethodesParser methodesParser,
+                                  String currentPath) throws IOException {
+        FileWriter classesWriter = new FileWriter(currentPath + "/classes.csv");
+        FileWriter methodesWriter = new FileWriter(currentPath + "/methodes.csv");
+        printCSV(classesParser.getcomplexityFile(), classesWriter);
+        printCSV(classesParser.getParsedList(), classesWriter);
+        System.out.println("\n-------------------\n");
+        printCSV(methodesParser.getcomplexityFile(), methodesWriter);
+        printCSV(methodesParser.getParsedList(), methodesWriter);
+        classesWriter.close();
+        methodesWriter.close();
+    }
+
+    /**
+     *
      * @param fileToPrint C'est le fichier(List) qui sera imprimer dans un fichier .csv
-     * @param writer C'est une instanciation de type FileWriter pour ecrire dans le fichier cree.
+     * @param writer C'est une instanciation de type FileWriter pour ecrire dans
+     *               le fichier cree.
      * @throws IOException
      */
     public static void printCSV(List<List<String>> fileToPrint, FileWriter writer) throws IOException {
@@ -83,7 +158,6 @@ public class CodeAnalyzer {
                                             classesParser, MethodesParser
                                             methodesParser) throws IOException {
         Document doc = getData(dataURL);
-        List<List<List<String>>> classesAndMethodes = new ArrayList<>();
         if (doc != null) {
             Elements links = doc.select("a");
             for (Element link : links) {
