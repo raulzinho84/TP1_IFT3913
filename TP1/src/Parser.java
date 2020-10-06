@@ -7,32 +7,54 @@ public class Parser {
     private List<List<String>> parsedLists;
     private List<String> codeToParse;
     private String currChemin;
+    private List<List<String>> totalParsedLists;
+    private List<List<String>> complexityFile;
 
     /**
-     *
-     * @param firstRow
+     *  Constructeur de la classe Parser
+     * @param firstRow C'est les valeurs de la premiere ligne pour les deux
+     *                 sous-classes(MethodesParser et ClassesParser).
      */
-    public Parser(List<String> firstRow) {
+    public Parser(List<String> firstRow, List<String> firstTotalRow) {
         this.parsedLists = new ArrayList<>();
         this.parsedLists.add(firstRow);
         this.codeToParse = new ArrayList<>();
         this.currChemin = null;
+        this.totalParsedLists = new ArrayList<>();
+        this.totalParsedLists.add(firstTotalRow);
+        this.complexityFile = new ArrayList<>();
     }
 
     /**
-     *
-     * @return
+     *  Getter
+     * @return La liste parsedList.
      */
     public List<List<String>> getParsedList() {
         return parsedLists;
     }
 
     /**
-     *
-     * @param parsedLists
+     *  Setter
+     * @param parsedLists La liste qu'on veut la remplacer par la liste originale.
      */
     private void setParsedList(List<List<String>> parsedLists) {
         this.parsedLists = parsedLists;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public List<List<String>> getTotalParsedLists() {
+        return totalParsedLists;
+    }
+
+    /**
+     *
+     * @param totalParsedLists
+     */
+    public void setTotalParsedLists(List<List<String>> totalParsedLists) {
+        this.totalParsedLists = totalParsedLists;
     }
 
     /**
@@ -74,6 +96,37 @@ public class Parser {
      */
     void addFirstParserList(int index, List<String> element) {
         this.parsedLists.add(index, element);
+    }
+
+    /**
+     *
+     * @param index
+     * @param element
+     */
+    void addSecondParserList(int index, List<String> element) {
+        this.totalParsedLists.add(index, element);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public List<List<String>> getcomplexityFile() { return complexityFile; }
+
+    /**
+     *
+     * @param complexityFile
+     */
+    public void setcomplexityFile(List<List<String>> complexityFile) {
+        this.complexityFile = complexityFile;
+    }
+
+    /**
+     *
+     * @param arr
+     */
+    public void addcomplexityArray(List<String> arr) {
+        this.complexityFile.add(arr);
     }
 
     /**
@@ -260,44 +313,88 @@ public class Parser {
 
     /**
      *
+     * @param densityComments
+     * @param objectComplexity
+     * @return
+     */
+    float calculer_BC(float densityComments, float objectComplexity) {
+        return densityComments/objectComplexity;
+    }
+
+    /**
+     *
      * @param currFileData
      */
     void rearrangeData(List<String> currFileData) {
-        int currIndex = 0, dcIndex, locIndex, nlocIndex;
-        float currDcRatio, currLoc, currNLoc, currIndexDcRatio, currIndexLoc,
-                currIndexNLoc;
-        if(currFileData.size() == 5) {
-            dcIndex = 4;
-            locIndex = 2;
-            nlocIndex = 3;
-        } else {
-            dcIndex = 5;
+        List<String> tempFileData;
+        int bcIndex, locIndex;
+        float currBCRatio;
+        if(currFileData.size() == 6) {
+            bcIndex = 5;
             locIndex = 3;
-            nlocIndex = 4;
+            tempFileData = Arrays.asList(currFileData.get(0),
+                    currFileData.get(1), currFileData.get(2), currFileData.get(3),
+                    currFileData.get(4));
+        } else {
+            bcIndex = 6;
+            locIndex = 4;
+            tempFileData = Arrays.asList(currFileData.get(0),
+                    currFileData.get(1), currFileData.get(2), currFileData.get(3),
+                    currFileData.get(4), currFileData.get(5));
         }
-        currDcRatio = Float.parseFloat(currFileData.get(dcIndex));
-        currLoc = Float.parseFloat(currFileData.get(locIndex));
-        currNLoc = Float.parseFloat(currFileData.get(nlocIndex));
-        if(this.getParsedList().size() > 1) {
-            for (List<String> currIndexData : this.getParsedList()) {
-                if (currIndex > 0) {
-                    currIndexDcRatio = Float.parseFloat(currIndexData.get(dcIndex));
-                    currIndexLoc = Float.parseFloat(currIndexData.get(locIndex));
-                    currIndexNLoc = Float.parseFloat(currIndexData.get(nlocIndex));
-                    if (currDcRatio < currIndexDcRatio) {
-                        addFirstParserList(currIndex, currFileData);
-                        break;
-                    } else {
-                        if (currDcRatio == currIndexDcRatio) {
-                            if (currNLoc > currIndexNLoc) {
-                                addFirstParserList(currIndex, currFileData);
-                                break;
-                            }
+        currBCRatio = Float.parseFloat(currFileData.get(bcIndex));
+        if(this.totalParsedLists.size() > 1) {
+            iterateOverFileData(currFileData, tempFileData, currBCRatio, bcIndex,
+                    locIndex);
+        } else {
+            addFirstParserList(1, tempFileData);
+            addSecondParserList(1, currFileData);
+        }
+    }
+
+    /**
+     *
+     * @param currFileData
+     * @param tempFileData
+     * @param currBCRatio
+     * @param bcIndex
+     * @return
+     */
+    void iterateOverFileData(List<String> currFileData, List<String> tempFileData,
+                             float currBCRatio, int bcIndex, int locIndex) {
+        int currIndex = 0;
+        float currIndexBcRatio, currFileLoc, currIndexLoc;
+        currFileLoc = Float.parseFloat(currFileData.get(locIndex));
+        for (List<String> currIndexData : this.getTotalParsedLists()) {
+            if (currIndex > 0) {
+                currIndexBcRatio = Float.parseFloat(currIndexData.get(bcIndex));
+                currIndexLoc = Float.parseFloat(currIndexData.get(locIndex));
+                if (currBCRatio < currIndexBcRatio) {
+                    addToParserList(currIndex, currFileData, tempFileData);
+                    return;
+                } else {
+                    if(currBCRatio == currIndexBcRatio) {
+                        if(currFileLoc > currIndexLoc) {
+                            addToParserList(currIndex, currFileData, tempFileData);
+                            return;
                         }
                     }
                 }
-                currIndex++;
             }
-        } else { addFirstParserList(1, currFileData); }
+            currIndex++;
+        }
+        addToParserList(currIndex, currFileData, tempFileData);
+    }
+
+    /**
+     *
+     * @param currIndex
+     * @param currFileData
+     * @param tempFileData
+     */
+    void addToParserList(int currIndex, List<String> currFileData,
+                         List<String> tempFileData) {
+        this.addFirstParserList(currIndex, tempFileData);
+        this.addSecondParserList(currIndex, currFileData);
     }
 }
