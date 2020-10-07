@@ -203,14 +203,12 @@ public class CodeAnalyzer {
      * @param methodesParser C'est le parseur instancie qui sera responsable a traiter les methodes.
      * @param extractedCode C'est le code extrait de la page qui contient les classes et les methodes.
      * @param chemin C'est le chemin courant(link) de la page.
-     * @return
      */
-    public static List<String> parseClasses(ClassesParser classesParser,
-                                            MethodesParser methodesParser,
-                                            List<String> extractedCode,
-                                            String chemin) {
+    public static void parseClasses(ClassesParser classesParser,
+                                    MethodesParser methodesParser,
+                      List<String> extractedCode, String chemin) {
         classesParser.setCodeToParse(extractedCode);
         classesParser.setCurrChemin(chemin);
-        return classesParser.treatCode(methodesParser);
+        classesParser.treatCode(methodesParser);
     }
 }
