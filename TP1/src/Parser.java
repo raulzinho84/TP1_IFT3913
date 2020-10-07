@@ -34,7 +34,7 @@ public class Parser {
     }
 
     /**
-     *  Setter
+     *  Setter.
      * @param parsedLists La liste qu'on veut la remplacer par la liste originale.
      */
     private void setParsedList(List<List<String>> parsedLists) {
@@ -42,7 +42,7 @@ public class Parser {
     }
 
     /**
-     *
+     *  Getter.
      * @return
      */
     public List<List<String>> getTotalParsedLists() {
@@ -50,7 +50,7 @@ public class Parser {
     }
 
     /**
-     *
+     * Setter.
      * @param totalParsedLists
      */
     public void setTotalParsedLists(List<List<String>> totalParsedLists) {
@@ -58,7 +58,7 @@ public class Parser {
     }
 
     /**
-     *
+     * Getter.
      * @return
      */
     public List<String> getCodeToParse() {
@@ -66,7 +66,7 @@ public class Parser {
     }
 
     /**
-     *
+     * Setter.
      * @param codeToParse
      */
     void setCodeToParse(List<String> codeToParse) {
@@ -74,88 +74,81 @@ public class Parser {
     }
 
     /**
-     *
-     * @return
+     * Getter.
+     * @return  le chemin qui contient la page web courante.
      */
     public String getCurrChemin() {
         return currChemin;
     }
 
     /**
-     *
-     * @param currChemin
+     * Setter.
+     * @param currChemin Prend un nouveau site web et le remplace par l'ancien.
      */
     void setCurrChemin(String currChemin) {
         this.currChemin = currChemin;
     }
 
     /**
-     *
-     * @param index
-     * @param element
+     * Ajoute un element a un index x dans la liste parsedLists.
+     * @param index L'index ou la liste element sera ajoutee.
+     * @param element la liste qui sera ajoute a l'index x.
      */
     void addFirstParserList(int index, List<String> element) {
         this.parsedLists.add(index, element);
     }
 
     /**
-     *
-     * @param index
-     * @param element
+     * Ajoute un element a un index x dans la liste totalParsedLists.
+     * @param index L'index ou la liste element sera ajoutee.
+     * @param element la liste qui sera ajoute a l'index x.
      */
     void addSecondParserList(int index, List<String> element) {
         this.totalParsedLists.add(index, element);
     }
 
     /**
-     *
-     * @return
+     * Getter.
+     * @return La liste contenant les complexites pour les classes et les methodes.
      */
     public List<List<String>> getcomplexityFile() { return complexityFile; }
 
     /**
-     *
-     * @param complexityFile
+     * Setter
+     * @param complexityFile La nouvelle liste qui va remplacer l'ancienne.
      */
     public void setcomplexityFile(List<List<String>> complexityFile) {
         this.complexityFile = complexityFile;
     }
 
     /**
-     *
-     * @param arr
+     * Ajouter un element a la fin de la liste de complexite.
+     * @param arr La liste qui sera ajoutee dans la liste de liste de complexite.
      */
     public void addcomplexityArray(List<String> arr) {
         this.complexityFile.add(arr);
     }
 
     /**
-     *
+     * Methode utilisee pour enlever tous les elements de l'ojet parsedLists.
      */
     void clearParsedList() { this.parsedLists.clear(); }
 
-    /**
-     *
-     * @param methodesParser
-     * @return
-     */
-    List<String> treatCode(MethodesParser methodesParser) {
-        return null;
-    }
+    // Il existe deux methodes treatCode.
 
     /**
-     *
-     * @param currentClass
-     * @return
+     * C'est la methode utilisee dans la classe ClasseParser.
+     * @param methodesParser Utilise pour appeler MethodesParser a partir de
+     *                       ClassesParser.
+     * @return Cette methode sera surchargee dans la classe ClassesParser.
      */
-    List<String> treatCode(String currentClass) {
-        return null;
-    }
+    void treatCode(MethodesParser methodesParser) {}
 
     /**
-     *
-     * @param element
-     * @return
+     * C'est une methode pour detecter tout type de commentaires possible.
+     * @param element La phrase qu'on cherche a savoir s'il existe des
+     *                commentaires ou non.
+     * @return Un booleen qui indique si la liste contient des commentaires ou pas.
      */
     boolean detectForComments(String element) {
         return !element.contains("//") && !element.contains("/**") &&
@@ -164,9 +157,10 @@ public class Parser {
     }
 
     /**
-     *
-     * @param element
-     * @return
+     * C'est la methode responsable a detecter si la phrase contient une classe
+     * ou non.
+     * @param element La phrase dont on a besoin a detecter.
+     * @return Un booleen qui indique que element contient une classe ou non.
      */
     boolean detectForClass(String element) {
         return element.contains("class") || element.contains("abstract class") ||
@@ -174,9 +168,10 @@ public class Parser {
     }
 
     /**
-     *
-     * @param lineElements
-     * @return
+     * Cette methode va detecter si le premier mot est (privee, publique ou protegee).
+     * @param lineElements La phrase separee en tableau dont le premier element
+     *                     sera compare.
+     * @return Un booleen pour indiquer que le premier mot est comme mentionne.
      */
     boolean detectForPrivacy(String[] lineElements) {
         return lineElements[0].contentEquals("private") ||
@@ -185,9 +180,9 @@ public class Parser {
     }
 
     /**
-     *
-     * @param line
-     * @return
+     * Prend un string au lieu d'un tableau.
+     * @param line Un string contenant le mot a detecter.
+     * @return Un booleen pour indiquer que le premier mot est comme mentionne.
      */
     boolean detectForPrivacy(String line) {
         return line.contains("private") || line.contains("protected") ||
@@ -195,9 +190,12 @@ public class Parser {
     }
 
     /**
-     *
-     * @param element
-     * @return
+     * Une methode pour separer les mots qui se trouvent aux extremites des
+     * parentheses.
+     * @param element La phrase contenant les mots a separer.
+     * @return  un seul element si la il n'existe pas des arguments dans la meme
+     *          ligne que la methode ou xxx_xxx qui represente le nom de la methode
+     *          et le 1er parametre apres la parenthese ouvrante.
      */
     String splitParenthesis(String element) {
         String[] splitElements = element.split("\\(");
@@ -206,12 +204,11 @@ public class Parser {
     }
 
     /**
-     *
-     * @param element
-     * @param splitElements
-     * @return
+     * Methode pour enlever les virgules au debut d'une phrase.
+     * @param splitElements Un tableau contenant les mots de la phrase a evaluer.
+     * @return Une nouvelle phrase sans virgule en forme de String.
      */
-    String removeFirstChar(String element, String[] splitElements) {
+    String removeFirstChar(String[] splitElements) {
         String[] tempList = Arrays.copyOfRange(splitElements, 1, splitElements.length);
         return String.join("", tempList);
     }
@@ -223,10 +220,11 @@ public class Parser {
     //  ---------------------------------------------------------------------------        //
 
     /**
-     *
-     * @param classTextList
-     * @param is_CLOC
-     * @return
+     * Methode qui va calculer les lignes sans ou avec commentaires en passant
+     * le booleen is_CLOC.
+     * @param classTextList C'est la classe qu'on veut la traiter.
+     * @param is_CLOC C'est vrai si c'est CLOC(commented) et faux sinon.
+     * @return Le nombre des lignes calculees.
      */
     int calculateLinesOrComments(List<String> classTextList, Boolean is_CLOC) {
         int totalCount = 0;
@@ -253,15 +251,22 @@ public class Parser {
         return totalCount;
     }
 
+    /**
+     * Une methode pour utilisent les espaces pour separer les mots sous forme
+     * d'une liste des mots.
+     * @param element La phrase a traiter.
+     * @return  Un tableau ou une liste contenant les mots qui se trouvent dans
+     *          une phrase.
+     */
     List<String> separateAndRemoveSpaces(String element) {
         List<String> elementLine = new ArrayList<>(Arrays.asList(element.split(" ")));
         return removeLineSpaces(elementLine);
     }
 
     /**
-     *
-     * @param elementLine
-     * @return
+     * Une methode pour enlever les espaces au debut de la phrase("\t").
+     * @param elementLine La phrase qu'on va traiter sous forme d'un tableau.
+     * @return La phrase sans les espaces au debut.
      */
     List<String> removeLineSpaces(List<String> elementLine) {
         for (String item : elementLine) {
@@ -273,9 +278,10 @@ public class Parser {
     }
 
     /**
-     *
-     * @param classTextList
-     * @return
+     * Methode pour calculer les non-commentaires lignes.
+     * @param classTextList La classe ou la methode dont on veut calculer
+     *                      ses lignes.
+     * @return le numero des lignes cherchees.
      */
 
     float calculer_NCLOC(List<String> classTextList) {
@@ -283,47 +289,51 @@ public class Parser {
     }
 
     /**
-     *
-     * @param nClocResult
-     * @param clocResult
-     * @return
+     * Methode pour calculer le numero total des lignes.
+     * @param nClocResult # des lignes non-commentaires.
+     * @param clocResult # des lignes avec commentaires.
+     * @return cloc + ncloc.
      */
     float calculer_LOC(float nClocResult, float clocResult) {
         return nClocResult + clocResult;
     }
 
     /**
-     *
-     * @param classTextList
-     * @return
+     * Methode pour calculer les lignes avec commentaires.
+     * @param classTextList La classe ou la methode dont on veut calculer
+     *                      ses lignes.
+     * @return le numero des lignes cherchees.
      */
     float calculer_CLOC(List<String> classTextList) {
         return calculateLinesOrComments(classTextList,  true);
     }
 
     /**
-     *
-     * @param commentsDensity
-     * @param linesOfCode
-     * @return
+     * Methode pour calculer la densite des commentaires dans une classe
+     * ou une methode.
+     * @param commentsDensity CLOC.
+     * @param linesOfCode LOC.
+     * @return CLOC/LOC.
      */
     float calculer_DC(float commentsDensity, float linesOfCode) {
         return commentsDensity/linesOfCode;
     }
 
     /**
-     *
-     * @param densityComments
-     * @param objectComplexity
-     * @return
+     * Methode pour calculer la complexite d'une classe ou une methode.
+     * @param densityComments DC(classe ou methode).
+     * @param objectComplexity CC(methode) ou WMC(classe).
+     * @return DC/CC ou DC/WMC
      */
     float calculer_BC(float densityComments, float objectComplexity) {
         return densityComments/objectComplexity;
     }
 
     /**
-     *
-     * @param currFileData
+     * Methode pour extraire les 3 classes ou methodes les moins commentes dans projet.
+     * @param currFileData La liste des elements qu'on veut ajouter a la liste des listes
+     *                     des elements qui representent les donnees des classes et des
+     *                     methodes extraites.
      */
     void rearrangeData(List<String> currFileData) {
         List<String> tempFileData;
@@ -353,12 +363,15 @@ public class Parser {
     }
 
     /**
-     *
-     * @param currFileData
-     * @param tempFileData
-     * @param currBCRatio
-     * @param bcIndex
-     * @return
+     * Methode pour iterer sur la liste des listes pour trouver la position
+     * actuelle de la nouvelle liste par rapport aux anciens selon le
+     * classement de BC et la longueur d'un code si BC est en egalite.
+     * @param currFileData Liste des elements(ligne des donnees) a ajouter.
+     * @param tempFileData La liste contenant les donnees(BC, CC ou WMC).
+     * @param currBCRatio La valeur du BC de la liste courante(a comparer avec
+     *                   la liste qu'on cherche a ajouter).
+     * @param bcIndex L'index de la colonne qui contient les valeurs du BC.
+     * @param locIndex L'index de la colonne qui contient les LOCs.
      */
     void iterateOverFileData(List<String> currFileData, List<String> tempFileData,
                              float currBCRatio, int bcIndex, int locIndex) {
@@ -387,10 +400,11 @@ public class Parser {
     }
 
     /**
-     *
-     * @param currIndex
-     * @param currFileData
-     * @param tempFileData
+     * La methode responsable a ajouter la liste passe en parametre dans la
+     * liste des listes des donnees obtenues par notre recherche.
+     * @param currIndex L'index qu'on va ajouter la liste dans lequel.
+     * @param currFileData Les donnees a ajouter dans parsedLists.
+     * @param tempFileData LEs donnees a ajouter dans totalParsedLists.
      */
     void addToParserList(int currIndex, List<String> currFileData,
                          List<String> tempFileData) {
