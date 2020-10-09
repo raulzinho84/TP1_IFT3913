@@ -15,7 +15,7 @@ This program simply works on GITHUB projects and parses all their files recursiv
   - CC(Class Complexity).
   - WMC(Weighted Methods per Class).
 Which will be calculated for both(Classes and Methods).
-* 1.0
+* Version : 1.0
 
 ### How do I get set up? ###
 
