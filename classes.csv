@@ -1,106 +1,225 @@
-chemin, class, methode, methode_CLOC, methode_LOC, methode_DC	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/NumberTickUnitSource.java, NumberTickUnitSource, 165.0, 13.0, 0.07878788	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/editor/DefaultNumberAxisEditor.java, DefaultNumberAxisEditor, 94.0, 9.0, 0.095744684	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/BorderArrangement.java, BorderArrangement, 418.0, 53.0, 0.12679426	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/editor/DefaultLogAxisEditor.java, DefaultLogAxisEditor, 86.0, 13.0, 0.15116279	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/editor/DefaultPolarPlotEditor.java, DefaultPolarPlotEditor, 119.0, 21.0, 0.1764706	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/editor/DefaultChartEditor.java, DefaultChartEditor, 152.0, 27.0, 0.17763157	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/CyclicNumberAxis.java, CycleBoundTick, 677.0, 124.0, 0.183161	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/editor/DefaultValueAxisEditor.java, DefaultValueAxisEditor, 258.0, 48.0, 0.18604651	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/editor/DefaultTitleEditor.java, DefaultTitleEditor, 171.0, 34.0, 0.19883041	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/editor/DefaultPlotEditor.java, DefaultPlotEditor, 425.0, 87.0, 0.20470588	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/AxisSpace.java, AxisSpace, 238.0, 55.0, 0.23109244	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/MarkerAxisBand.java, MarkerAxisBand, 162.0, 38.0, 0.2345679	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/LineBorder.java, LineBorder, 131.0, 31.0, 0.23664123	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/GridArrangement.java, GridArrangement, 316.0, 77.0, 0.24367088	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/XYTitleAnnotation.java, XYTitleAnnotation, 246.0, 61.0, 0.24796748	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/DateAxis.java, DefaultTimeline, 1358.0, 344.0, 0.2533137	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/SubCategoryAxis.java, SubCategoryAxis, 291.0, 75.0, 0.25773194	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/LogarithmicAxis.java, LogarithmicAxis, 742.0, 194.0, 0.26145554	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/ColumnArrangement.java, ColumnArrangement, 273.0, 72.0, 0.26373628	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/SymbolAxis.java, SymbolAxis, 543.0, 147.0, 0.27071825	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/PeriodAxis.java, PeriodAxis, 856.0, 237.0, 0.27686915	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/FlowArrangement.java, FlowArrangement, 315.0, 88.0, 0.2793651	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/XYLineAnnotation.java, XYLineAnnotation, 186.0, 52.0, 0.2795699	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/CategoryLabelPositions.java, CategoryLabelPositions, 294.0, 84.0, 0.2857143	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/XYShapeAnnotation.java, XYShapeAnnotation, 178.0, 51.0, 0.28651685	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/BlockContainer.java, BlockContainer, 163.0, 47.0, 0.28834355	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/entity/StandardEntityCollection.java, StandardEntityCollection, 107.0, 31.0, 0.2897196	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/NumberAxis.java, NumberAxis, 809.0, 239.0, 0.29542646	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/CategoryTick.java, CategoryTick, 71.0, 21.0, 0.29577464	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/CategoryTextAnnotation.java, CategoryTextAnnotation, 152.0, 45.0, 0.29605263	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/ModuloAxis.java, ModuloAxis, 296.0, 90.0, 0.30405405	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/XYDrawableAnnotation.java, XYDrawableAnnotation, 156.0, 48.0, 0.30769232	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/LogAxis.java, LogAxis, 778.0, 241.0, 0.30976865	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/CategoryAxis.java, CategoryAxis, 1035.0, 321.0, 0.31014493	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/entity/CategoryLabelEntity.java, CategoryLabelEntity&lt;C, 58.0, 18.0, 0.31034482	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/imagemap/ImageMapUtils.java, ImageMapUtils, 167.0, 52.0, 0.31137726	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/imagemap/StandardToolTipTagFragmentGenerator.java, StandardToolTipTagFragmentGenerator, 16.0, 5.0, 0.3125	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/XYBoxAnnotation.java, XYBoxAnnotation, 190.0, 60.0, 0.31578946	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/BlockBorder.java, BlockBorder, 129.0, 41.0, 0.31782946	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/CategoryLineAnnotation.java, CategoryLineAnnotation, 249.0, 80.0, 0.32128513	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/RectangleConstraint.java, RectangleConstraint, 216.0, 70.0, 0.32407406	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/Tick.java, Tick, 89.0, 29.0, 0.3258427	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/encoders/ImageEncoderFactory.java, ImageEncoderFactory, 73.0, 24.0, 0.32876712	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/NumberTickUnit.java, NumberTickUnit, 75.0, 25.0, 0.33333334	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/entity/XYAnnotationEntity.java, XYAnnotationEntity, 48.0, 16.0, 0.33333334	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/AxisLocation.java, AxisLocation, 36.0, 12.0, 0.33333334	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/imagemap/OverLIBToolTipTagFragmentGenerator.java, OverLIBToolTipTagFragmentGenerator, 18.0, 6.0, 0.33333334	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/XYPointerAnnotation.java, XYPointerAnnotation, 334.0, 112.0, 0.33532935	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/entity/ChartEntity.java, ChartEntity, 250.0, 84.0, 0.336	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/XYPolygonAnnotation.java, XYPolygonAnnotation, 220.0, 74.0, 0.33636364	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/ExtendedCategoryAxis.java, ExtendedCategoryAxis, 133.0, 45.0, 0.33834586	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/QuarterDateFormat.java, QuarterDateFormat, 105.0, 36.0, 0.34285715	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/PeriodAxisLabelInfo.java, PeriodAxisLabelInfo, 212.0, 73.0, 0.3443396	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/TickUnits.java, TickUnits, 101.0, 35.0, 0.34653464	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/XYImageAnnotation.java, XYImageAnnotation, 175.0, 61.0, 0.34857142	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/Axis.java, Axis, 1150.0, 404.0, 0.35130435	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/CategoryPointerAnnotation.java, CategoryPointerAnnotation, 324.0, 114.0, 0.35185185	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/AxisCollection.java, AxisCollection, 68.0, 24.0, 0.3529412	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/LabelBlock.java, LabelBlock, 244.0, 87.0, 0.35655737	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/AxisState.java, AxisState, 95.0, 34.0, 0.35789475	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/ValueAxis.java, ValueAxis, 1174.0, 426.0, 0.36286202	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/CenterArrangement.java, CenterArrangement, 212.0, 77.0, 0.36320755	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/XYDataImageAnnotation.java, XYDataImageAnnotation, 222.0, 81.0, 0.36486486	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/entity/JFreeChartEntity.java, JFreeChartEntity, 109.0, 40.0, 0.36697248	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/entity/PlotEntity.java, PlotEntity, 109.0, 40.0, 0.36697248	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/entity/TitleEntity.java, TitleEntity, 109.0, 40.0, 0.36697248	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/entity/XYItemEntity.java, XYItemEntity, 84.0, 31.0, 0.3690476	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/CategoryLabelPosition.java, CategoryLabelPosition, 148.0, 55.0, 0.3716216	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/XYTextAnnotation.java, XYTextAnnotation, 400.0, 149.0, 0.3725	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/AbstractXYAnnotation.java, AbstractXYAnnotation, 110.0, 41.0, 0.37272727	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/entity/AxisEntity.java, AxisEntity, 110.0, 41.0, 0.37272727	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/TextAnnotation.java, TextAnnotation, 195.0, 73.0, 0.37435898	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/ColorBlock.java, ColorBlock, 88.0, 33.0, 0.375	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/event/TitleChangeEvent.java, TitleChangeEvent, 16.0, 6.0, 0.375	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/imagemap/StandardURLTagFragmentGenerator.java, StandardURLTagFragmentGenerator, 16.0, 6.0, 0.375	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/AbstractBlock.java, AbstractBlock, 393.0, 148.0, 0.37659034	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/StandardTickUnitSource.java, StandardTickUnitSource, 58.0, 22.0, 0.37931034	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/BlockResult.java, BlockResult, 21.0, 8.0, 0.3809524	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/editor/DefaultAxisEditor.java, DefaultAxisEditor, 325.0, 124.0, 0.38153845	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/editor/DefaultChartEditorFactory.java, DefaultChartEditorFactory, 13.0, 5.0, 0.3846154	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/entity/PieSectionEntity.java, PieSectionEntity&lt;K, 122.0, 47.0, 0.3852459	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/TickUnit.java, TickUnit, 101.0, 39.0, 0.38613862	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/DateTickUnit.java, DateTickUnit, 220.0, 88.0, 0.4	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/DateTick.java, DateTick, 62.0, 25.0, 0.4032258	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/imagemap/DynamicDriveToolTipTagFragmentGenerator.java, DynamicDriveToolTipTagFragmentGenerator, 32.0, 13.0, 0.40625	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/entity/LegendItemEntity.java, LegendItemEntity&lt;S, 86.0, 35.0, 0.40697673	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/event/ChartProgressEvent.java, ChartProgressEvent, 54.0, 22.0, 0.4074074	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/date/SpreadsheetDate.java, SpreadsheetDate, 292.0, 120.0, 0.41095892	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/event/ChartChangeEvent.java, ChartChangeEvent, 53.0, 22.0, 0.41509435	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/ValueTick.java, ValueTick, 69.0, 29.0, 0.42028984	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/CompassFormat.java, CompassFormat, 75.0, 32.0, 0.42666668	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/encoders/SunJPEGEncoderAdapter.java, SunJPEGEncoderAdapter, 82.0, 35.0, 0.42682928	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/MonthDateFormat.java, MonthDateFormat, 147.0, 63.0, 0.42857143	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/CategoryLabelWidthType.java, CategoryLabelWidthType, 7.0, 3.0, 0.42857143	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/event/ChartProgressEventType.java, ChartProgressEventType, 7.0, 3.0, 0.42857143	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/entity/CategoryItemEntity.java, CategoryItemEntity&lt;R, 104.0, 45.0, 0.43269232	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/date/SerialDate.java, SerialDate, 622.0, 273.0, 0.43890676	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/event/AxisChangeEvent.java, AxisChangeEvent, 18.0, 8.0, 0.44444445	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/LengthConstraintType.java, LengthConstraintType, 9.0, 4.0, 0.44444445	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/encoders/ImageFormat.java, ImageFormat, 9.0, 4.0, 0.44444445	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/event/ChartChangeEventType.java, ChartChangeEventType, 9.0, 4.0, 0.44444445	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/EmptyBlock.java, EmptyBlock, 51.0, 23.0, 0.4509804	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/encoders/SunPNGEncoderAdapter.java, SunPNGEncoderAdapter, 53.0, 24.0, 0.4528302	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/DateTickUnitType.java, DateTickUnitType, 30.0, 14.0, 0.46666667	
-https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/AbstractAnnotation.java, AbstractAnnotation, 107.0, 50.0, 0.46728972	
+WMC, classe_BC	
+2, 0.24264705	
+5, 0.07522936	
+1, 0.72727275	
+1, 0.7692308	
+1, 0.32258064	
+1, 0.3529412	
+1, 0.29801324	
+1, 0.37628865	
+1, 0.7647059	
+1, 0.75	
+1, 0.31746033	
+1, 0.36651585	
+1, 0.30967742	
+1, 0.3505747	
+1, 0.28108108	
+1, 0.33633634	
+1, 0.33789954	
+1, 0.2881356	
+1, 0.3734336	
+1, 0.2489796	
+2, 0.17580505	
+1, 0.35820895	
+1, 0.5555556	
+1, 0.34285715	
+1, 0.23206751	
+1, 0.3617021	
+1, 0.5555556	
+4, 0.077611215	
+9, 0.041572183	
+7, 0.040955633	
+1, 0.5	
+6, 0.05	
+1, 0.23023255	
+1, 0.26209387	
+1, 0.40983605	
+1, 0.5555556	
+1, 0.40182647	
+1, 0.4827586	
+1, 0.3409091	
+8, 0.038770914	
+1, 0.52380955	
+1, 0.26180837	
+9, 0.026224982	
+4, 0.076271184	
+1, 0.43150684	
+1, 0.29579207	
+1, 0.5555556	
+1, 0.33783785	
+3, 0.026422763	
+1, 0.34615386	
+1, 0.3859649	
+1, 0.25862068	
+7, 0.038745385	
+1, 0.32954547	
+1, 0.5714286	
+5, 0.077999994	
+1, 0.7894737	
+1, 0.35	
+1, 0.86206895	
+1, 0.36317137	
+1, 0.42647058	
+2, 0.18877551	
+1, 0.71428573	
+1, 0.7714286	
+5, 0.0640625	
+6, 0.04714912	
+1, 0.75	
+1, 0.5	
+1, 0.4	
+1, 0.12709832	
+1, 0.3649289	
+4, 0.094827585	
+1, 0.2647059	
+1, 0.46	
+1, 0.75	
+1, 0.6666667	
+1, 0.28025478	
+1, 0.24444444	
+1, 0.3580247	
+1, 0.5	
+6, 0.03974359	
+1, 0.3255814	
+1, 0.5	
+1, 0.43961352	
+4, 0.10309278	
+1, 0.71428573	
+1, 0.6666667	
+1, 0.5	
+2, 0.19135803	
+2, 0.08940397	
+1, 0.41666666	
+2, 0.07647059	
+2, 0.048387095	
+1, 0.20518868	
+2, 0.08898305	
+1, 0.2	
+2, 0.09338521	
+1, 0.5471698	
+1, 0.71428573	
+1, 0.33333334	
+1, 0.5	
+1, 0.43209878	
+1, 0.46153846	
+1, 0.3761468	
+1, 0.4368932	
+1, 0.31578946	
+1, 0.33734939	
+1, 0.6896552	
+1, 0.37037036	
+chemin, class, classe_LOC, classe_CLOC, classe_DC	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/MarkerAxisBand.java, MarkerAxisBand, 161.0, 38.0, 0.23602484	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/NumberTickUnitSource.java, NumberTickUnitSource, 164.0, 13.0, 0.07926829	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/SymbolAxis.java, SymbolAxis, 542.0, 147.0, 0.2712177	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/LogAxis.java, LogAxis, 777.0, 241.0, 0.3101673	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/LineBorder.java, LineBorder, 130.0, 31.0, 0.23846154	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/CategoryLabelPositions.java, CategoryLabelPositions, 293.0, 84.0, 0.28668943	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/CategoryLabelPosition.java, CategoryLabelPosition, 147.0, 55.0, 0.37414965	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/BlockContainer.java, BlockContainer, 152.0, 43.0, 0.28289473	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/editor/DefaultNumberAxisEditor.java, DefaultNumberAxisEditor, 93.0, 9.0, 0.09677419	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/CategoryTick.java, CategoryTick, 70.0, 21.0, 0.3	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/BlockBorder.java, BlockBorder, 128.0, 41.0, 0.3203125	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/AbstractXYAnnotation.java, AbstractXYAnnotation, 109.0, 41.0, 0.3761468	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/ModuloAxis.java, ModuloAxis, 295.0, 90.0, 0.30508474	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/editor/DefaultLogAxisEditor.java, DefaultLogAxisEditor, 85.0, 13.0, 0.15294118	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/CategoryAxis.java, CategoryAxis, 1034.0, 321.0, 0.31044486	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/TickUnit.java, TickUnit, 100.0, 39.0, 0.39	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/editor/DefaultPolarPlotEditor.java, DefaultPolarPlotEditor, 118.0, 21.0, 0.1779661	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/editor/DefaultChartEditor.java, DefaultChartEditor, 151.0, 27.0, 0.17880794	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/editor/DefaultValueAxisEditor.java, DefaultValueAxisEditor, 257.0, 48.0, 0.18677042	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/ColorBlock.java, ColorBlock, 87.0, 33.0, 0.37931034	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/date/SpreadsheetDate.java, SpreadsheetDate, 291.0, 120.0, 0.41237113	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/BorderArrangement.java, BorderArrangement, 417.0, 53.0, 0.12709832	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/Axis.java, Axis, 1149.0, 404.0, 0.3516101	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/AbstractBlock.java, AbstractBlock, 392.0, 148.0, 0.37755102	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/editor/DefaultAxisEditor.java, DefaultAxisEditor, 324.0, 124.0, 0.38271606	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/editor/DefaultTitleEditor.java, DefaultTitleEditor, 170.0, 34.0, 0.2	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/editor/DefaultPlotEditor.java, DefaultPlotEditor, 424.0, 87.0, 0.20518868	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/CyclicNumberAxis.java, CyclicNumberAxis, 860.0, 198.0, 0.23023255	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/AxisSpace.java, AxisSpace, 237.0, 55.0, 0.23206751	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/AbstractAnnotation.java, AbstractAnnotation, 68.0, 33.0, 0.4852941	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/GridArrangement.java, GridArrangement, 315.0, 77.0, 0.24444444	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/XYTitleAnnotation.java, XYTitleAnnotation, 245.0, 61.0, 0.2489796	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/SubCategoryAxis.java, SubCategoryAxis, 290.0, 75.0, 0.25862068	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/LogarithmicAxis.java, LogarithmicAxis, 741.0, 194.0, 0.26180837	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/DateAxis.java, DateAxis, 1385.0, 363.0, 0.26209387	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/ColumnArrangement.java, ColumnArrangement, 272.0, 72.0, 0.2647059	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/FlowArrangement.java, FlowArrangement, 314.0, 88.0, 0.28025478	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/XYLineAnnotation.java, XYLineAnnotation, 185.0, 52.0, 0.28108108	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/XYShapeAnnotation.java, XYShapeAnnotation, 177.0, 51.0, 0.2881356	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/NumberAxis.java, NumberAxis, 808.0, 239.0, 0.29579207	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/CategoryTextAnnotation.java, CategoryTextAnnotation, 151.0, 45.0, 0.29801324	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/XYDrawableAnnotation.java, XYDrawableAnnotation, 155.0, 48.0, 0.30967742	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/entity/CategoryLabelEntity.java, CategoryLabelEntity&lt;C, 57.0, 18.0, 0.31578946	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/XYBoxAnnotation.java, XYBoxAnnotation, 189.0, 60.0, 0.31746033	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/CategoryLineAnnotation.java, CategoryLineAnnotation, 248.0, 80.0, 0.32258064	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/RectangleConstraint.java, RectangleConstraint, 215.0, 70.0, 0.3255814	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/Tick.java, Tick, 88.0, 29.0, 0.32954547	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/encoders/ImageEncoderFactory.java, ImageEncoderFactory, 72.0, 24.0, 0.33333334	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/XYPointerAnnotation.java, XYPointerAnnotation, 333.0, 112.0, 0.33633634	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/entity/ChartEntity.java, ChartEntity, 249.0, 84.0, 0.33734939	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/NumberTickUnit.java, NumberTickUnit, 74.0, 25.0, 0.33783785	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/XYPolygonAnnotation.java, XYPolygonAnnotation, 219.0, 74.0, 0.33789954	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/ExtendedCategoryAxis.java, ExtendedCategoryAxis, 132.0, 45.0, 0.3409091	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/AxisLocation.java, AxisLocation, 35.0, 12.0, 0.34285715	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/QuarterDateFormat.java, QuarterDateFormat, 104.0, 36.0, 0.34615386	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/TickUnits.java, TickUnits, 100.0, 35.0, 0.35	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/XYImageAnnotation.java, XYImageAnnotation, 174.0, 61.0, 0.3505747	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/CategoryPointerAnnotation.java, CategoryPointerAnnotation, 323.0, 114.0, 0.3529412	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/LabelBlock.java, LabelBlock, 243.0, 87.0, 0.3580247	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/AxisCollection.java, AxisCollection, 67.0, 24.0, 0.35820895	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/AxisState.java, AxisState, 94.0, 34.0, 0.3617021	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/ValueAxis.java, ValueAxis, 1173.0, 426.0, 0.36317137	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/CenterArrangement.java, CenterArrangement, 211.0, 77.0, 0.3649289	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/XYDataImageAnnotation.java, XYDataImageAnnotation, 221.0, 81.0, 0.36651585	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/entity/JFreeChartEntity.java, JFreeChartEntity, 108.0, 40.0, 0.37037036	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/XYTextAnnotation.java, XYTextAnnotation, 399.0, 149.0, 0.3734336	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/entity/AxisEntity.java, AxisEntity, 109.0, 41.0, 0.3761468	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/TextAnnotation.java, TextAnnotation, 194.0, 73.0, 0.37628865	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/StandardTickUnitSource.java, StandardTickUnitSource, 57.0, 22.0, 0.3859649	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/BlockResult.java, BlockResult, 20.0, 8.0, 0.4	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/DateTickUnit.java, DateTickUnit, 219.0, 88.0, 0.40182647	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/DateTick.java, DateTick, 61.0, 25.0, 0.40983605	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/editor/DefaultChartEditorFactory.java, DefaultChartEditorFactory, 12.0, 5.0, 0.41666666	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/ValueTick.java, ValueTick, 68.0, 29.0, 0.42647058	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/MonthDateFormat.java, MonthDateFormat, 146.0, 63.0, 0.43150684	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/encoders/SunJPEGEncoderAdapter.java, SunJPEGEncoderAdapter, 81.0, 35.0, 0.43209878	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/entity/CategoryItemEntity.java, CategoryItemEntity&lt;R, 103.0, 45.0, 0.4368932	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/date/SerialDate.java, SerialDate, 621.0, 273.0, 0.43961352	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/EmptyBlock.java, EmptyBlock, 50.0, 23.0, 0.46	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/encoders/SunPNGEncoderAdapter.java, SunPNGEncoderAdapter, 52.0, 24.0, 0.46153846	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/DateTickUnitType.java, DateTickUnitType, 29.0, 14.0, 0.4827586	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/BlockParams.java, BlockParams, 56.0, 28.0, 0.5	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/editor/ChartEditorManager.java, ChartEditorManager, 28.0, 14.0, 0.5	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/date/MonthConstants.java, MonthConstants, 26.0, 13.0, 0.5	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/LengthConstraintType.java, LengthConstraintType, 8.0, 4.0, 0.5	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/encoders/ImageFormat.java, ImageFormat, 8.0, 4.0, 0.5	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/CategoryLabelWidthType.java, CategoryLabelWidthType, 6.0, 3.0, 0.5	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/LogTick.java, LogTick, 21.0, 11.0, 0.52380955	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/encoders/EncoderUtil.java, EncoderUtil, 106.0, 58.0, 0.5471698	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/NumberTick.java, NumberTick, 36.0, 20.0, 0.5555556	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/AxisLabelLocation.java, AxisLabelLocation, 9.0, 5.0, 0.5555556	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/CategoryAnchor.java, CategoryAnchor, 9.0, 5.0, 0.5555556	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/DateTickMarkPosition.java, DateTickMarkPosition, 9.0, 5.0, 0.5555556	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/TickType.java, TickType, 7.0, 4.0, 0.5714286	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/EntityBlockResult.java, EntityBlockResult, 6.0, 4.0, 0.6666667	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/editor/ChartEditorFactory.java, ChartEditorFactory, 6.0, 4.0, 0.6666667	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/entity/EntityCollection.java, EntityCollection, 29.0, 20.0, 0.6896552	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/encoders/ImageEncoder.java, ImageEncoder, 28.0, 20.0, 0.71428573	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/Arrangement.java, Arrangement, 21.0, 15.0, 0.71428573	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/editor/ChartEditor.java, ChartEditor, 7.0, 5.0, 0.71428573	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/Annotation.java, Annotation, 11.0, 8.0, 0.72727275	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/XYAnnotationBoundsInfo.java, XYAnnotationBoundsInfo, 16.0, 12.0, 0.75	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/BlockFrame.java, BlockFrame, 12.0, 9.0, 0.75	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/EntityBlockParams.java, EntityBlockParams, 8.0, 6.0, 0.75	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/XYAnnotation.java, XYAnnotation, 17.0, 13.0, 0.7647059	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/annotations/CategoryAnnotation.java, CategoryAnnotation, 13.0, 10.0, 0.7692308	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/block/Block.java, Block, 35.0, 27.0, 0.7714286	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/TickUnitSource.java, TickUnitSource, 19.0, 15.0, 0.7894737	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/Timeline.java, Timeline, 58.0, 50.0, 0.86206895	
+les 3 classes les moins bien commentées sont : 	
+chemin, class, classe_LOC, classe_CLOC, classe_DC	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/MarkerAxisBand.java, MarkerAxisBand, 161.0, 38.0, 0.23602484	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/NumberTickUnitSource.java, NumberTickUnitSource, 164.0, 13.0, 0.07926829	
+https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/SymbolAxis.java, SymbolAxis, 542.0, 147.0, 0.2712177	
