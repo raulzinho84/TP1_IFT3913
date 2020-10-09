@@ -31,7 +31,7 @@ Which will be calculated for both(Classes and Methods).
 * How to run tests
     - To compile and run via terminal :
         1. Compile the program (see above for instructions)
-        2. Copy the ``` .class ``` files to "tests" folder
+        2. Copy the 4 ``` .class ``` files to "tests" folder
         3. Run this command to compile : ``` javac -cp "junit-4.13.jar:hamcrest-2.2.jar:." *.java ```
         4. Run this command to execute : ``` java -cp "junit-4.13.jar:hamcrest-2.2.jar:." TestRunner ```
         5. If the commands do not work, try replacing the ':' with ';' in the dependencies paths
