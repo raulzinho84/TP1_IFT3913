@@ -17,26 +17,34 @@ Which will be calculated for both(Classes and Methods).
 ### How do I get set up? ###
 
 * Summary of set up
-    - This program has been built with Intellij Idea Edu, so you can simply build and run
-    by download this repo.
-    - To compile and run via terminal :
+
+    - To simply run the .jar executable :
+        1. Access folder "Application"
+        2. Run this command : ``` java -jar CodeAnalyzer.jar ```
+        
+    - To simply run the .jar executable for unit tests :
+        1. Access folder "Application/Tester"
+        2. Run this command : ``` java -jar CodeAnalyzerTests.jar ```
+
+    - To compile and run via terminal from scratch :
         1. Access "src" folder on your terminal 
         2. Run this command to compile : ``` javac -cp "jsoup-1.13.1.jar" *.java ```
         3. Run this command to execute : ```  java -cp jsoup-1.13.1.jar:. CodeAnalyzer ```
         4. If the commands do not work, try replacing the ':' with ';' in the dependencies paths.
-* Dependencies (all in "src" or "tests" folder)
-    - ``` jsoup-1.13.1.jar ```
-    - ``` junit-4.13.jar ``` (for unit tests)
-    - ``` hamcrest-2.2.jar ``` (for unit tests)
-* How to run tests
-    - To compile and run via terminal :
-        1. Compile the program (see above for instructions)
+
+* How to run tests after compilation
+    - To compile and run via terminal after compilation :
         2. Copy the 4 ``` .class ``` files from "src" to "tests" folder.
         3. Access "tests" folder on your terminal. 
         4. Run this command to compile : ``` javac -cp "junit-4.13.jar:hamcrest-2.2.jar:." *.java ```
         5. Run this command to execute : ``` java -cp "junit-4.13.jar:hamcrest-2.2.jar:." TestRunner ```
         6. If the commands do not work, try replacing the ':' with ';' in the dependencies paths
 
+* Dependencies (all in "src" or "tests" folder)
+    - ``` jsoup-1.13.1.jar ```
+    - ``` junit-4.13.jar ``` (for unit tests)
+    - ``` hamcrest-2.2.jar ``` (for unit tests)
+    
 ### Who do I talk to? ###
 
 * Repo owner or admin
