@@ -1,0 +1,35 @@
+
+Reponse pour la Question 4 du TP1 :
+===================================
+
+*   A partir du projet visite (https://github.com/jfree/jfreechart) j'ai obtenu les 3 Classes et Methodes suivantes
+    Comme etant les moins commentees :
+
+    Les Classes :
+    -------------
+
+    chemin, class, classe_LOC, classe_CLOC, classe_DC
+    https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/MarkerAxisBand.java, MarkerAxisBand, 161.0, 38.0, 0.23602484
+    https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/NumberTickUnitSource.java, NumberTickUnitSource, 164.0, 13.0, 0.07926829
+    https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/SymbolAxis.java, SymbolAxis, 542.0, 147.0, 0.2712177
+
+    Les Methodes :
+    --------------
+
+    chemin, class, methode, methode_LOC, methode_CLOC, methode_DC
+    https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/NumberTickUnitSource.java, NumberTickUnitSource, getTickLabelFormat, 20.0, 0.0, 0.0
+    https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/NumberTickUnitSource.java, NumberTickUnitSource, next, 18.0, 0.0, 0.0
+    https://github.com/jfree/jfreechart/blob/master/src/main/java/org/jfree/chart/axis/NumberTickUnitSource.java, NumberTickUnitSource, previous, 18.0, 0.0, 0.0
+
+*   Donc selon les resultats obtenus, on peut constater que il existe un probleme avec cette methode de calcul s'il y en
+    plusieurs methodes qui ont exactement le meme ratio. Ce probleme consiste a conclure comment savoir lequel parmi les
+    methodes ayant un meme ratio qui a la densite la moins commentee.
+
+*   Le premier resultat obtenu m'a donne 3 classes : qui ont 2, 3 et 6 lignes de codes sans aucun commentaires.
+*   Mais ce resultat n'est pas evident puisqu'il y en a des methodes ou des classes qui ont le meme ratio mais avec
+    un NLOC qui est plus grand.
+*   Alors nous avons besoins d'avoir une autre methode (ou une methode modifiee) a cette methode pour comparer les
+    NLOC si les DC ont le meme ratio. Cette methode va prendre le NCLOC le plus grand au debut et le moins grand en
+    arriere en faisant le re-arrangement des lignes de la liste qui represente les objets extraits.
+*   J'ai deja implemente ce code dans mon projet et vous allez constatez que les objets sont maintenant mieux classes
+    a l'aide de cette amelioration.
