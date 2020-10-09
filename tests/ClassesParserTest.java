@@ -11,11 +11,11 @@ public class ClassesParserTest {
     private List<String> CodeToTest = new ArrayList<>();
     private ClassesParser classesParserTest;
 
-    private int expectedLinesOrComments = 9;
-    private float expectedNCLOC = 9.0f;
+    private int expectedLinesOrComments = 8;
+    private float expectedNCLOC = 8.0f;
     private float expectedCLOC = 5.0f;
-    private float expectedLOC = 14.0f;
-    private float expectedDC = 0.35714287f;
+    private float expectedLOC = 13.0f;
+    private float expectedDC = 0.3846154f;
     private float deltaPrecision = 0.00000001f;
 
     public ClassesParserTest() {
@@ -47,7 +47,7 @@ public class ClassesParserTest {
     public void getClassName() {
         String value = "public abstract class TESTCLASS implements Annotation";
         String expected = "TESTCLASS";
-        assertEquals(expected, classesParserTest.getClassName(value, value.split(" ")));
+        assertEquals(expected, classesParserTest.getClassName(value, Arrays.asList(value.split(" "))));
     }
 
     @Test

@@ -52,22 +52,22 @@ public class MethodesParserTest {
         Code.add("Object[] listeners = this.listenerList.getListenerList(); ");
         Code.add("} ");
         assertEquals("notifyListeners",
-                methodesParserTest.extractMethodeName(Code, "notifyListeners"));
+                methodesParserTest.buildMethodeName(Code, "notifyListeners"));
 
         //Testing with 1 arguments
         Code.set(0, "protected void notifyListeners(args arg1)");
         assertEquals("notifyListeners_args",
-                methodesParserTest.extractMethodeName(Code, "notifyListeners"));
+                methodesParserTest.buildMethodeName(Code, "notifyListeners"));
 
         //Testing with 2 arguments
         Code.set(0, "protected void notifyListeners(args arg1, args 2)");
         assertEquals("notifyListeners_args_args",
-                methodesParserTest.extractMethodeName(Code, "notifyListeners"));
+                methodesParserTest.buildMethodeName(Code, "notifyListeners"));
 
         //Testing with 3 arguments
         Code.set(0, "protected void notifyListeners(args arg1, args 2, args 3)");
         assertEquals("notifyListeners_args_args_args",
-                methodesParserTest.extractMethodeName(Code, "notifyListeners"));
+                methodesParserTest.buildMethodeName(Code, "notifyListeners"));
     }
 
     @Test

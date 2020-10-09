@@ -20,7 +20,7 @@ public class MethodesParser extends Parser {
     }
 
     /**
-     * Une methode qui retourne la valeur retouornee si la phrase contient
+     * Une methode qui retourne la valeur retourne si la phrase contient
      * un switch ou non.
      * @return La valeur de la presence d'un switch dans une phrase ou non.
      */
@@ -210,7 +210,7 @@ public class MethodesParser extends Parser {
     }
 
     /**
-     * Methoude pour ajouter les commentaires de JAVADOC qui se trouve avant
+     * Methode pour ajouter les commentaires de JAVADOC qui se trouve avant
      * la methode a exploiter.
      * @param lineCodeIndex C'est l'index de la ligne de code courante.
      * @return tous les commentaires JAVADOC trouvees avant une methode.

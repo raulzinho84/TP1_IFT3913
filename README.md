@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-
-=======
 # CodeAnalyzer #
 
 This program simply works on GITHUB projects and parses all their files recursiverly by opening them one by one then looking for the frequency of comments inside them.
@@ -20,20 +17,27 @@ Which will be calculated for both(Classes and Methods).
 ### How do I get set up? ###
 
 * Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
+    - This program has been built with Intellij Idea Edu, so you can simply build and run
+    by download this repo.
+    - To compile and run via terminal :
+        1. Access "src" folder on your terminal 
+        2. Run this command to compile : ``` javac -cp "jsoup-1.13.1.jar" *.java ```
+        3. Run this command to execute : ```  java -cp jsoup-1.13.1.jar:. CodeAnalyzer ```
+        4. If the commands do not work, try replacing the ':' with ';' in the dependencies paths.
+* Dependencies (all in "src" or "tests" folder)
+    - ``` jsoup-1.13.1.jar ```
+    - ``` junit-4.13.jar ``` (for unit tests)
+    - ``` hamcrest-2.2.jar ``` (for unit tests)
 * How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
+    - To compile and run via terminal :
+        1. Compile the program (see above for instructions)
+        2. Copy the ``` .class ``` files to "tests" folder
+        3. Run this command to compile : ``` javac -cp "junit-4.13.jar:hamcrest-2.2.jar:." *.java ```
+        4. Run this command to execute : ``` java -cp "junit-4.13.jar:hamcrest-2.2.jar:." TestRunner ```
+        5. If the commands do not work, try replacing the ':' with ';' in the dependencies paths
 
 ### Who do I talk to? ###
 
 * Repo owner or admin
-* Other community or team contact
->>>>>>> 8fa7bcb80345b2397892d6b1dd272182c5806df6
+    - [raulzinho84](https://github.com/raulzinho84)
+    - [Moore505](https://github.com/Moore505)
